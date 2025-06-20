@@ -10970,3 +10970,10 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 }
+
+.customnav {
+    text-align: center;
+    background-color: darkgrey;
+    margin: auto -10px;
+    padding: 10px;
+}

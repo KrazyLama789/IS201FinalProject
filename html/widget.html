@@ -1,129 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Current Weather App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      margin: 0;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #343a40;
-    }
-
-    h1 {
-      margin-bottom: 24px;
-      color: #343a40;
-    }
-
-    .weather-container {
-      background-color: #e1b6a5;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 320px;
-      text-align: center;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #bd5d38;
-      color: #ffffff;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #a7492a;
-    }
-
-    .weather-data {
-      margin-top: 20px;
-    }
-
-    .weather-icon {
-      width: 80px;
-      height: 80px;
-    }
-
-    .error {
-      color: red;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Current Weather</h1>
-
-  <div class="weather-container">
-    <input type="text" id="cityInput" placeholder="Enter city (e.g., Paris)" />
-    <button onclick="getWeather()">Get Weather</button>
-
-    <div class="weather-data" id="weatherData"></div>
-    <div class="error" id="errorMessage"></div>
-  </div>
-
-  <script>
-    const apiKey = "9142126509452033b4de92f3c993180f"; // Replace with your OpenWeatherMap API key
-
-    async function getWeather() {
-      const city = document.getElementById("cityInput").value.trim();
-      const weatherDiv = document.getElementById("weatherData");
-      const errorDiv = document.getElementById("errorMessage");
-
-      weatherDiv.innerHTML = "";
-      errorDiv.textContent = "";
-
-      if (!city) {
-        errorDiv.textContent = "Please enter a city name.";
-        return;
-      }
-
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${apiKey}`;
-
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-
-        if (data.cod !== 200) {
-          errorDiv.textContent = "City not found. Please check your spelling.";
-          return;
+    <meta charset="UTF-8" />
+    <title>Current Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #343a40;
         }
 
-        const temp = data.main.temp;
-        const description = data.weather[0].description;
-        const icon = data.weather[0].icon;
-        const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+        h1 {
+            margin-bottom: 24px;
+            color: #343a40;
+        }
 
-        weatherDiv.innerHTML = `
+        .weather-container {
+            background-color: #e1b6a5;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #bd5d38;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a7492a;
+        }
+
+        .weather-data {
+            margin-top: 20px;
+        }
+
+        .weather-icon {
+            width: 80px;
+            height: 80px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/mainstyles.css">
+</head>
+
+<body>
+    <h1>Current Weather</h1>
+
+    <div class="weather-container">
+        <input type="text" id="cityInput" placeholder="Enter city (e.g., Paris)" />
+        <button onclick="getWeather()">Get Weather</button>
+
+        <div class="weather-data" id="weatherData"></div>
+        <div class="error" id="errorMessage"></div>
+    </div>
+
+    <div class="customnav">
+        <a href="../index.html" id="top">Home</a> |
+        <a href="resume.html">Resume</a> |
+        <a href="booklist.html">Book List</a> |
+        <a href="#">Widget</a> |
+        <a href="tableau.html">Tableau</a>
+    </div>
+
+    <script>
+        const apiKey = "9142126509452033b4de92f3c993180f"; // Replace with your OpenWeatherMap API key
+
+        async function getWeather() {
+            const city = document.getElementById("cityInput").value.trim();
+            const weatherDiv = document.getElementById("weatherData");
+            const errorDiv = document.getElementById("errorMessage");
+
+            weatherDiv.innerHTML = "";
+            errorDiv.textContent = "";
+
+            if (!city) {
+                errorDiv.textContent = "Please enter a city name.";
+                return;
+            }
+
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${apiKey}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.cod !== 200) {
+                    errorDiv.textContent = "City not found. Please check your spelling.";
+                    return;
+                }
+
+                const temp = data.main.temp;
+                const description = data.weather[0].description;
+                const icon = data.weather[0].icon;
+                const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+                weatherDiv.innerHTML = `
           <img class="weather-icon" src="${iconUrl}" alt="${description}" />
           <h2>${data.name}</h2>
           <p><strong>Temperature:</strong> ${temp.toFixed(1)} °C</p>
           <p><strong>Condition:</strong> ${description}</p>
         `;
-      } catch (error) {
-        errorDiv.textContent = "Error retrieving weather data. Please try again later.";
-      }
-    }
-  </script>
+            } catch (error) {
+                errorDiv.textContent = "Error retrieving weather data. Please try again later.";
+            }
+        }
+    </script>
 </body>
+
 </html>

@@ -62,6 +62,9 @@ a:hover {
     margin-top: 0;
 }
 
-.nav {
-    justify-content: center;
+.customnav {
+    text-align: center;
+    background-color: darkgrey;
+    margin: auto -10px;
+    padding: 10px;
 }
