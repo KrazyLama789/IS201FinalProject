@@ -34,3 +34,34 @@ a:hover {
     margin: auto -10px;
     text-shadow: horizontal-offset vertical-offset blur-radius color;
 }
+
+.quote {
+    text-align: center;
+    font-style: italic;
+}
+
+.small {
+    font-size: smaller;
+    font-weight: normal;
+    color: rgb(59, 59, 59);
+}
+
+.right {
+    text-align: right;
+    background-color: goldenrod;
+    margin: -10px;
+    padding: 20px;
+}
+
+.rightimg {
+    display: flex;
+    gap: 15px;
+}
+
+.rightimg div p {
+    margin-top: 0;
+}
+
+.nav {
+    justify-content: center;
+}
